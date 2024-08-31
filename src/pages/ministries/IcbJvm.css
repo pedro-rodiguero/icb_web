@@ -1,0 +1,15 @@
+.icb-jvm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icb-jvm-container .carousel {
+  width: 66%; /* Two-thirds of the screen */
+}
+
+.icb-jvm-container p {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
