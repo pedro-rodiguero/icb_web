@@ -15,15 +15,12 @@
   height: 40px;
 }
 
-.main_logo img {
-  width: 80px;
-}
-
 .church-name {
-  font-family: 'Kent', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-size: 24px;
   color: white;
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .nav {

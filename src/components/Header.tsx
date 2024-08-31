@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo2 from '../images/logo2.svg';
-import main_logo from '../images/main_logo.svg';
 import './Header.css';
 
 const Header: React.FC = () => {
@@ -11,9 +10,7 @@ const Header: React.FC = () => {
         <Link to="/" className="logo2">
           <img src={logo2} alt="Church Logo" />
         </Link>
-        <Link to="/" className="main_logo">
-          <img src={main_logo} alt="Church Logo" className="main_logo" />
-        </Link>
+        <span className="church-name">IGREJA DE CRISTO</span>
       </div>
       <nav className="nav">
         <div className="dropdown">

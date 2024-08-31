@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Regular.woff2') format('woff2'),
+       url('../fonts/PlayfairDisplay-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Evolventa';
   src: url('../fonts/Evolventa-Regular.woff2') format('woff2'),
        url('../fonts/Evolventa-Regular.woff') format('woff');
