@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       </Link>
       <nav className="nav">
         <div className="dropdown">
-          <button className="dropbtn">ICB</button>
+          <Link to="/ICB" className="dropbtn">ICB</Link>
           <div className="dropdown-content">
             <Link to="/icb#quem-somos">Quem Somos</Link>
             <Link to="/icb#visao-missao-valores">Visão, Missão e Valores</Link>
@@ -19,17 +19,17 @@ const Header: React.FC = () => {
           </div>
         </div>
         <div className="dropdown">
-          <button className="dropbtn">Ministérios</button>
+          <Link to="/ministries" className="dropbtn">Ministérios</Link>
           <div className="dropdown-content">
-            <Link to="/ministerios#icb-jvm">ICB JVM</Link>
-            <Link to="/ministerios#adolas">Adolas</Link>
-            <Link to="/ministerios#casais">Casais</Link>
-            <Link to="/ministerios#criancas">Crianças</Link>
+            <Link to="/ministries#icb-jvm">ICB JVM</Link>
+            <Link to="/ministries#adolas">Adolas</Link>
+            <Link to="/ministries#casais">Casais</Link>
+            <Link to="/ministries#criancas">Crianças</Link>
           </div>
         </div>
-        <Link to="/mensagens">Mensagens</Link>
-        <Link to="/contribua">Contribua</Link>
-        <Link to="/contato">Contato</Link>
+        <Link to="/messages">Mensagens</Link>
+        <Link to="/contribute">Contribua</Link>
+        <Link to="/contact">Contato</Link>
       </nav>
     </header>
   );
