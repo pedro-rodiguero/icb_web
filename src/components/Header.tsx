@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.svg';
+import logo2 from '../images/logo2.svg';
+import main_logo from '../images/main_logo.svg';
 import './Header.css';
 
 const Header: React.FC = () => {
   return (
     <header className="header">
-      <Link to="/" className="logo">
-        <img src={logo} alt="Church Logo" />
-      </Link>
+      <div className="logo-container">
+        <Link to="/" className="logo2">
+          <img src={logo2} alt="Church Logo" />
+        </Link>
+        <Link to="/" className="main_logo">
+          <img src={main_logo} alt="Church Logo" className="main_logo" />
+        </Link>
+      </div>
       <nav className="nav">
         <div className="dropdown">
           <Link to="/ICB" className="dropbtn">ICB</Link>
