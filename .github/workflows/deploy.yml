@@ -13,7 +13,7 @@ env:
   DEPLOYMENT_NAME: 'icb-web-deploy'
   REPOSITORY: 'https://github.com/pedro-rodiguero/icb_web'
   IMAGE: 'https://github.com/pedro-rodiguero/icb_web:latest'
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/icb-web-434214/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
 
 jobs:
   setup-build-publish-deploy:
