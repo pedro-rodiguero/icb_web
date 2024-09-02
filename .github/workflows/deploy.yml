@@ -35,6 +35,7 @@ jobs:
         with:
           workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: 'gke-cluster-sa@icb-web-434214.iam.gserviceaccount.com'
+          audience: 'https://github.com/pedro-rodiguero/icb_web'
 
       - name: 'Docker Auth'
         uses: 'docker/login-action@v3'
