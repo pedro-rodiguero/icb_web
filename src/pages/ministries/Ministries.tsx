@@ -1,8 +1,9 @@
-import React from 'react';
-import ICBJVM from './IcbJvm';
-import Teenagers from './Teenagers';
-import Couples from './Couples';
-import Children from './Children';
+import React from "react";
+
+import ICBJVM from "./IcbJvm";
+import Teenagers from "./Teenagers";
+import Couples from "./Couples";
+import Children from "./Children";
 
 const Ministries: React.FC = () => {
   return (

@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import logo2 from '../images/logo2.svg';
-import main_logo from '../images/main_logo.svg';
-import './Header.css';
+import React from "react";
+import { Link } from "react-router-dom";
+
+import logo2 from "../images/logo2.svg";
+import MainLogo from "../images/main_logo.svg";
+import "./Header.css";
 
 const Header: React.FC = () => {
   return (
@@ -12,12 +13,14 @@ const Header: React.FC = () => {
           <img src={logo2} alt="Church Logo" />
         </Link>
         <Link to="/" className="main_logo">
-          <img src={main_logo} alt="Church Logo" />
+          <img src={MainLogo} alt="Church Logo" />
         </Link>
       </div>
       <nav className="nav">
         <div className="dropdown">
-          <Link to="/ICB" className="dropbtn">ICB</Link>
+          <Link to="/ICB" className="dropbtn">
+            ICB
+          </Link>
           <div className="dropdown-content">
             <Link to="/icb#quem-somos">Quem Somos</Link>
             <Link to="/icb#visao-missao-valores">Visão, Missão e Valores</Link>
@@ -25,7 +28,9 @@ const Header: React.FC = () => {
           </div>
         </div>
         <div className="dropdown">
-          <Link to="/ministries" className="dropbtn">Ministérios</Link>
+          <Link to="/ministries" className="dropbtn">
+            Ministérios
+          </Link>
           <div className="dropdown-content">
             <Link to="/ministries#icb-jvm">ICB JVM</Link>
             <Link to="/ministries#adolas">Adolas</Link>

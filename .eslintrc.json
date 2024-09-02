@@ -20,6 +20,15 @@
     },
     "plugins": ["@typescript-eslint", "prettier"],
     "rules": {
+      "import/no-extraneous-dependencies": [
+      "error",{
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false,
+        "includeInternal": true,
+        "includeTypes": true
+      }
+    ],
       "linebreak-style": ["error", "unix"],
       "eol-last": ["error", "always"],
       "quotes": ["error", "double"], // Ensure this line is present

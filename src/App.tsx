@@ -1,15 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './pages/Home';
-import Icb from './pages/Icb';
-import Ministries from './pages/ministries/Ministries';
-import Messages from './pages/Messages';
-import Contribute from './pages/Contribute';
-import Contact from './pages/Contact';
-import './styles/App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Icb from "./pages/Icb";
+import Ministries from "./pages/ministries/Ministries";
+import Messages from "./pages/Messages";
+import Contribute from "./pages/Contribute";
+import Contact from "./pages/Contact";
+import "./styles/App.css";
+
+const App = () => {
   return (
     <Router>
       <Header />
@@ -23,6 +24,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

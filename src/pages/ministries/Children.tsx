@@ -1,10 +1,9 @@
-import React from 'react';
-import ImageCarousel from '../../components/ImageCarousel';
+import React from "react";
+
+import ImageCarousel from "../../components/ImageCarousel";
 
 const Children: React.FC = () => {
-  const imageUrls = [
-    'https://storage.cloud.google.com/'
-  ]
+  const imageUrls = ["https://storage.cloud.google.com/"];
   return (
     <div>
       <h2>Crianças</h2>
