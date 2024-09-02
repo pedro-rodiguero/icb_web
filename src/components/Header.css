@@ -13,11 +13,11 @@
 
 .logo2 img {
   height: 40px;
-  transform: scale(1.5); /* Scale the logo to make it appear larger */
+  transform: scale(1.5);
 }
 .main_logo img {
   height: 40px;
-  transform: scale(1.5); /* Scale the logo to make it appear larger */
+  transform: scale(1.5);
   margin-top: 5px;
   margin-left: 40px;
 }
