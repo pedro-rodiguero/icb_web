@@ -13,12 +13,13 @@
 
 .logo2 img {
   height: 40px;
+  transform: scale(1.5); /* Scale the logo to make it appear larger */
 }
 .main_logo img {
   height: 40px;
   transform: scale(1.5); /* Scale the logo to make it appear larger */
   margin-top: 5px;
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .church-name {
