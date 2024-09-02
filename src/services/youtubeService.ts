@@ -1,8 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import axios from "axios";
 
-const API_KEY = "AIzaSyDsGNrosqtTjNGEOLS87N2cwdItw3AuxXY";
-const CHANNEL_ID = "UCGRWMUV-tU2z32Wz9K02Y9g";
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+const CHANNEL_ID = process.env.REACT_APP_YOUTUBE_CHANNEL_ID;
 
 const youtubeService = {
   getLatestVideos: async () => {

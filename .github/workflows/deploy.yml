@@ -8,11 +8,11 @@ on:
 env:
   PROJECT_ID: 'icb-web-434214'
   GAR_LOCATION: 'us-central1'
-  GKE_CLUSTER: 'your-cluster-name'
-  GKE_ZONE: 'us-central1-c'
-  DEPLOYMENT_NAME: 'your-deployment-name'
-  REPOSITORY: 'your-repository-name'
-  IMAGE: 'your-image-name'
+  GKE_CLUSTER: 'icb-web-deploy'
+  GKE_ZONE: 'southamerica-east1'
+  DEPLOYMENT_NAME: 'icb-web-deploy'  # Example deployment name
+  REPOSITORY: 'https://github.com/pedro-rodiguero/icb_web'  # Example repository
+  IMAGE: 'https://github.com/pedro-rodiguero/icb_web:latest'  # Example image name
   WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
 
 jobs:
@@ -63,8 +63,8 @@ jobs:
 
       - name: 'Set up Kustomize'
         run: |-
-          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_linux_amd64.tar.gz
-          tar -xzf kustomize_v5.4.3_linux_amd64.tar.gz
+          curl -sfLo kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_linux_amd64.tar.gz
+          tar -xzf kustomize.tar.gz
           chmod u+x ./kustomize
 
       - name: 'Deploy to GKE'
