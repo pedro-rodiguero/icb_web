@@ -36,7 +36,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
-          service_account: 'PEDRO.M.RODIGUERO@gmail.com'
+          service_account: 'icb-web-service-account@icb-web-434214.iam.gserviceaccount.com'
           audience: 'https://github.com/pedro-rodiguero/icb_web'
 
       - name: 'Docker Auth'
