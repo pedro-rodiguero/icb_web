@@ -49,8 +49,8 @@ jobs:
       - name: 'Set up GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
         with:
-          cluster_name: '${{ env.GKE_CLUSTER }}'
-          location: '${{ env.GKE_ZONE }}'
+          cluster_name: 'icb-web-deploy'
+          location: 'southamerica-east1'
 
       - name: 'Build and push Docker container'
         run: |-
