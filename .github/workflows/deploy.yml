@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: 'icb-web-434214'
+  PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
   GAR_LOCATION: 'us-central1'
   GKE_CLUSTER: 'icb-web-deploy'
   GKE_ZONE: 'southamerica-east1'
@@ -14,6 +14,8 @@ env:
   REPOSITORY: 'https://github.com/pedro-rodiguero/icb_web'
   IMAGE: 'https://github.com/pedro-rodiguero/icb_web:latest'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/772107785669/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
+  REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
+  REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
 
 jobs:
   setup-build-publish-deploy:
