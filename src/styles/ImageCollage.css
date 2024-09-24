@@ -1,0 +1,52 @@
+.image-collage {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .template {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-1 {
+    top: 20px;
+    left: 50px;
+    transform: rotate(-10deg);
+  }
+  
+  .image-2 {
+    top: 100px;
+    left: 200px;
+    transform: rotate(15deg);
+  }
+  
+  .image-3 {
+    top: 50px;
+    left: 350px;
+    transform: rotate(-5deg);
+  }
+  
+  .image-4 {
+    top: 150px;
+    left: 100px;
+    transform: rotate(10deg);
+  }
+  
+  .image-5 {
+    top: 200px;
+    left: 300px;
+    transform: rotate(-15deg);
+  }
+  
+  .image:hover {
+    transform: scale(1.1);
+  }

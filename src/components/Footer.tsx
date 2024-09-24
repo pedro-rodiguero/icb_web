@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         <p>
           Siga-nos nas redes sociais:
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/icbrasilia"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
           </a>{" "}
           |
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/icb.oficial"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
           </a>{" "}
           |
           <a
-            href="https://www.youtube.com"
+            href="https://www.youtube.com/c/IgrejadeCristoemBrasília/streams"
             target="_blank"
             rel="noopener noreferrer"
           >

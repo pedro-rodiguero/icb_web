@@ -1,7 +1,27 @@
+/* eslint-disable react/no-array-index-key */
 import React from "react";
 
 import "../styles/Icb.css";
 import overall from "../images/home/overall.svg";
+
+const imageUrls = [
+  "../images/home/photo1.svg",
+  "../images/home/photo2.svg",
+  "../images/home/photo3.svg",
+  "../images/home/photo4.svg",
+  "../images/home/photo5.svg",
+  "../images/home/photo6.svg",
+  "../images/home/photo7.svg",
+  "../images/home/photo8.svg",
+];
+
+const imageAlts = [
+  "Event at ICB",
+  "Community gathering",
+  "Worship session",
+  "Youth group activity",
+  "Volunteer work",
+];
 
 const Icb: React.FC = () => {
   return (
@@ -9,6 +29,13 @@ const Icb: React.FC = () => {
       <section id="icb-pictures">
         <div className="svg-container">
           <img src={overall} alt="ICB" />
+        </div>
+        <div className="photo-collage">
+          {imageUrls.map((url, index) => (
+            <div key={index} className="photo-container">
+              <img src={url} alt={imageAlts[index]} className="photo" />
+            </div>
+          ))}
         </div>
       </section>
       <section id="quem-somos">
