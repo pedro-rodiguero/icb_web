@@ -12,20 +12,21 @@ import picture6 from "../images/home/picture6.svg";
 import picture7 from "../images/home/picture7.svg";
 import picture8 from "../images/home/picture8.svg";
 import inspiracoes from "../images/home/inspiracoes.svg";
+import lema from "../images/home/lema.svg";
+import year1960 from "../images/home/year1960.svg";
 
 const Icb: React.FC = () => {
   return (
     <div>
       <section id="icb-pictures">
-        <div className="svg-container">
-          <img src={overall} alt="ICB" />
-        </div>
         <div className="photo-collage">
           <img
             src={picture1}
             alt="Photo1"
             className="photo-container image-1"
           />
+          <img src={year1960} alt="Lema" className="photo-container year1960" />
+
           <img
             src={picture2}
             alt="Photo2"
@@ -50,6 +51,22 @@ const Icb: React.FC = () => {
             src={picture5}
             alt="Photo5"
             className="photo-container image-5"
+          />
+          <img
+            src={picture6}
+            alt="Photo6"
+            className="photo-container image-6"
+          />
+          <img src={lema} alt="Lema" className="photo-container lema" />
+          <img
+            src={picture7}
+            alt="Photo7"
+            className="photo-container image-7"
+          />
+          <img
+            src={picture8}
+            alt="Photo8"
+            className="photo-container image-8"
           />
         </div>
       </section>

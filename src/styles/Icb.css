@@ -12,10 +12,12 @@
 }
 
 .photo-collage {
+  background-color: #6096BA; /* Set your desired background color */
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  padding: 20px;
+  height: 120vh; /* Adjusted to pixels */
 }
 
 .photo-container {
@@ -44,60 +46,101 @@
 
 .image-1 {
   position: absolute;
-  top: 68%; /* Adjusted to percentage */
+  top: 63%; /* Adjusted to percentage */
   left: 2%; /* Adjusted to percentage */
   width: 18%; /* Adjusted to percentage */
   height: 35%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+  z-index: 10; /* Higher z-index to overlap others */
+}
+
+.year1960 {
+  position: absolute;
+  top: 99%; /* Adjusted to percentage */
+  left: 1%; /* Adjusted to percentage */
+  width: 22%; /* Adjusted to percentage */
+  height: 18%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
 
 .image-2 {
   position: absolute;
-  top: 28%; /* Adjusted to percentage */
+  top: 23%; /* Adjusted to percentage */
   left: 7%; /* Adjusted to percentage */
   width: 29%; /* Adjusted to percentage */
   height: 42%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
 
 .image-3 {
   position: absolute;
-  top: 42%; /* Adjusted to percentage */
+  top: 37%; /* Adjusted to percentage */
   left: 31%; /* Adjusted to percentage */
   width: 18%; /* Adjusted to percentage */
   height: 34%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
 
 .inspirations {
   position: absolute;
-  top: 23%; /* Adjusted to percentage */
+  top: 18%; /* Adjusted to percentage */
   left: 34%; /* Adjusted to percentage */
   width: 22%; /* Adjusted to percentage */
   height: 34%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
   transform: rotate(0deg); /* Adjust rotation if needed */
+  z-index: 10; /* Higher z-index to overlap others */
 }
 
 .image-4 {
   position: absolute;
-  top: 79%; /* Adjusted to percentage */
+  top: 74%; /* Adjusted to percentage */
   left: 25%; /* Adjusted to percentage */
-  width: 26%; /* Adjusted to percentage */
+  width: 25%; /* Adjusted to percentage */
   height: 39%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
 
 .image-5 {
   position: absolute;
-  top: 28%; /* Adjusted to percentage */
+  top: 23%; /* Adjusted to percentage */
   left: 51%; /* Adjusted to percentage */
   width: 22%; /* Adjusted to percentage */
   height: 39%; /* Adjusted to percentage */
-  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-6 {
+  position: absolute;
+  top: 65.5%; /* Adjusted to percentage */
+  left: 56%; /* Adjusted to percentage */
+  width: 19%; /* Adjusted to percentage */
+  height: 36.5%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.lema {
+  position: absolute;
+  top: 101%; /* Adjusted to percentage */
+  left: 61%; /* Adjusted to percentage */
+  width: 10%; /* Adjusted to percentage */
+  height: 18%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-7 {
+  position: absolute;
+  top: 34%; /* Adjusted to percentage */
+  left: 77%; /* Adjusted to percentage */
+  width: 21%; /* Adjusted to percentage */
+  height: 38%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-8 {
+  position: absolute;
+  top: 79%; /* Adjusted to percentage */
+  left: 77%; /* Adjusted to percentage */
+  width: 21%; /* Adjusted to percentage */
+  height: 40%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
