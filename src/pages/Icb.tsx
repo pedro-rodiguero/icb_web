@@ -1,11 +1,16 @@
 import React from "react";
 
-import ImageCarousel from "../components/ImageCarousel";
+import "../styles/Icb.css";
+import overall from "../images/home/overall.svg";
 
 const Icb: React.FC = () => {
-  const imageUrls = ["https://storage.cloud.google.com/"];
   return (
     <div>
+      <section id="icb-pictures">
+        <div className="svg-container">
+          <img src={overall} alt="ICB" />
+        </div>
+      </section>
       <section id="quem-somos">
         <h2>Quem Somos</h2>
         <p>
@@ -25,7 +30,6 @@ const Icb: React.FC = () => {
           depois, em 1961, foi inaugurado o templo da Igreja de Cristo em
           Brasília.
         </p>
-        <ImageCarousel imageUrls={imageUrls} />
       </section>
       <section id="visao-missao-valores">
         <h2>Visão, Missão e Valores</h2>
