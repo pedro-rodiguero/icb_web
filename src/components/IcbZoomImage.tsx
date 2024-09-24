@@ -7,25 +7,24 @@ interface ZoomImageProps {
 }
 
 const getDescription = (src: string) => {
-  switch (src) {
-    case "picture1":
-      return "Photo 1 description.";
-    case "picture2":
-      return "Photo 2 description.";
-    case "picture3":
-      return "Photo 3 description.";
-    case "picture4":
-      return "Photo 4 description.";
-    case "picture5":
-      return "Photo 5 description.";
-    case "picture6":
-      return "Photo 6 description.";
-    case "picture7":
-      return "Photo 7 description.";
-    case "picture8":
-      return "Photo 8 description.";
-    default:
-      return "";
+  if (src.includes("picture1")) {
+    return "Photo 1 description.";
+  } else if (src.includes("picture2")) {
+    return "Photo 2 description.";
+  } else if (src.includes("picture3")) {
+    return "Photo 3 description.";
+  } else if (src.includes("picture4")) {
+    return "Photo 4 description.";
+  } else if (src.includes("picture5")) {
+    return "Photo 5 description.";
+  } else if (src.includes("picture6")) {
+    return "Photo 6 description.";
+  } else if (src.includes("picture7")) {
+    return "Photo 7 description.";
+  } else if (src.includes("picture8")) {
+    return "Photo 8 description.";
+  } else {
+    return "Description not available.";
   }
 };
 
