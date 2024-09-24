@@ -1,14 +1,20 @@
+/* Global Styles */
+body {
+  font-family: 'Evolventa', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout Styles */
 .svg-container {
   background-color: #6096BA; /* Set your desired background color */
   padding: 20px; /* Optional: Add some padding around the SVG */
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.svg-container img {
-  width: 100%;
-  height: auto;
 }
 
 .photo-collage {
@@ -20,17 +26,18 @@
   height: 120vh; /* Adjusted to pixels */
 }
 
+/* Component Styles */
+.svg-container img {
+  width: 100%;
+  height: auto;
+}
+
 .photo-container {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.photo-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .photo {
@@ -40,10 +47,7 @@
   transition: transform 0.3s ease;
 }
 
-.photo-container:hover .photo {
-  transform: scale(1.1);
-}
-
+/* Image Positioning */
 .image-1 {
   position: absolute;
   top: 63%; /* Adjusted to percentage */
@@ -52,16 +56,6 @@
   height: 35%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
   z-index: 10; /* Higher z-index to overlap others */
-}
-
-.year1960 {
-  position: absolute;
-  top: 99%; /* Adjusted to percentage */
-  left: 1%; /* Adjusted to percentage */
-  width: 22%; /* Adjusted to percentage */
-  height: 18%; /* Adjusted to percentage */
-  transform: rotate(0deg); /* Adjust rotation if needed */
-  box-shadow: none;
 }
 
 .image-2 {
@@ -80,17 +74,6 @@
   width: 18%; /* Adjusted to percentage */
   height: 34%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
-}
-
-.inspirations {
-  position: absolute;
-  top: 18%; /* Adjusted to percentage */
-  left: 34%; /* Adjusted to percentage */
-  width: 22%; /* Adjusted to percentage */
-  height: 34%; /* Adjusted to percentage */
-  transform: rotate(0deg); /* Adjust rotation if needed */
-  z-index: 10; /* Higher z-index to overlap others */
-  box-shadow: none;
 }
 
 .image-4 {
@@ -120,16 +103,6 @@
   transform: rotate(0deg); /* Adjust rotation if needed */
 }
 
-.lema {
-  position: absolute;
-  top: 101%; /* Adjusted to percentage */
-  left: 61%; /* Adjusted to percentage */
-  width: 10%; /* Adjusted to percentage */
-  height: 18%; /* Adjusted to percentage */
-  transform: rotate(0deg); /* Adjust rotation if needed */
-  box-shadow: none;
-}
-
 .image-7 {
   position: absolute;
   top: 34%; /* Adjusted to percentage */
@@ -146,4 +119,62 @@
   width: 21%; /* Adjusted to percentage */
   height: 40%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+/* Special Elements */
+.year1960 {
+  position: absolute;
+  top: 99%; /* Adjusted to percentage */
+  left: 1%; /* Adjusted to percentage */
+  width: 22%; /* Adjusted to percentage */
+  height: 18%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+  box-shadow: none;
+  transform: none;
+}
+
+.inspirations {
+  position: absolute;
+  top: 18%; /* Adjusted to percentage */
+  left: 34%; /* Adjusted to percentage */
+  width: 22%; /* Adjusted to percentage */
+  height: 34%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+  z-index: 10; /* Higher z-index to overlap others */
+  box-shadow: none;
+  transform: none;
+}
+
+.lema {
+  position: absolute;
+  top: 101%; /* Adjusted to percentage */
+  left: 61%; /* Adjusted to percentage */
+  width: 10%; /* Adjusted to percentage */
+  height: 18%; /* Adjusted to percentage */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+  box-shadow: none;
+  transform: none;
+}
+
+/* State Styles */
+.photo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.photo-container:hover .photo {
+  transform: scale(1.1);
+}
+
+.year1960:hover,
+.inspirations:hover,
+.lema:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.year1960:hover .photo,
+.inspirations:hover .photo,
+.lema:hover .photo {
+  transform: none;
 }
