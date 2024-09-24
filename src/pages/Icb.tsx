@@ -3,25 +3,15 @@ import React from "react";
 
 import "../styles/Icb.css";
 import overall from "../images/home/overall.svg";
-
-const imageUrls = [
-  "../images/home/photo1.svg",
-  "../images/home/photo2.svg",
-  "../images/home/photo3.svg",
-  "../images/home/photo4.svg",
-  "../images/home/photo5.svg",
-  "../images/home/photo6.svg",
-  "../images/home/photo7.svg",
-  "../images/home/photo8.svg",
-];
-
-const imageAlts = [
-  "Event at ICB",
-  "Community gathering",
-  "Worship session",
-  "Youth group activity",
-  "Volunteer work",
-];
+import picture1 from "../images/home/picture1.svg";
+import picture2 from "../images/home/picture2.svg";
+import picture3 from "../images/home/picture3.svg";
+import picture4 from "../images/home/picture4.svg";
+import picture5 from "../images/home/picture5.svg";
+import picture6 from "../images/home/picture6.svg";
+import picture7 from "../images/home/picture7.svg";
+import picture8 from "../images/home/picture8.svg";
+import inspiracoes from "../images/home/inspiracoes.svg";
 
 const Icb: React.FC = () => {
   return (
@@ -31,11 +21,36 @@ const Icb: React.FC = () => {
           <img src={overall} alt="ICB" />
         </div>
         <div className="photo-collage">
-          {imageUrls.map((url, index) => (
-            <div key={index} className="photo-container">
-              <img src={url} alt={imageAlts[index]} className="photo" />
-            </div>
-          ))}
+          <img
+            src={picture1}
+            alt="Photo1"
+            className="photo-container image-1"
+          />
+          <img
+            src={picture2}
+            alt="Photo2"
+            className="photo-container image-2"
+          />
+          <img
+            src={picture3}
+            alt="Photo3"
+            className="photo-container image-3"
+          />
+          <img
+            src={inspiracoes}
+            alt="Inspirações"
+            className="photo-container inspirations"
+          />
+          <img
+            src={picture4}
+            alt="Photo4"
+            className="photo-container image-4"
+          />
+          <img
+            src={picture5}
+            alt="Photo5"
+            className="photo-container image-5"
+          />
         </div>
       </section>
       <section id="quem-somos">

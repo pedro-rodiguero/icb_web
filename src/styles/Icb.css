@@ -1,44 +1,103 @@
 .svg-container {
-    background-color: #6096BA; /* Set your desired background color */
-    padding: 20px; /* Optional: Add some padding around the SVG */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .svg-container img {
-    width: 100%;
-    height: auto;
-  }
-  .photo-collage {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
+  background-color: #6096BA; /* Set your desired background color */
+  padding: 20px; /* Optional: Add some padding around the SVG */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .photo-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.svg-container img {
+  width: 100%;
+  height: auto;
+}
 
-  .photo-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
+.photo-collage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
-  .photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+.photo-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .photo-container:hover .photo {
-    transform: scale(1.1);
-  }
+.photo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
 
+.photo-container:hover .photo {
+  transform: scale(1.1);
+}
+
+.image-1 {
+  position: absolute;
+  top: 68%; /* Adjusted to percentage */
+  left: 2%; /* Adjusted to percentage */
+  width: 18%; /* Adjusted to percentage */
+  height: 35%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-2 {
+  position: absolute;
+  top: 28%; /* Adjusted to percentage */
+  left: 7%; /* Adjusted to percentage */
+  width: 29%; /* Adjusted to percentage */
+  height: 42%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-3 {
+  position: absolute;
+  top: 42%; /* Adjusted to percentage */
+  left: 31%; /* Adjusted to percentage */
+  width: 18%; /* Adjusted to percentage */
+  height: 34%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.inspirations {
+  position: absolute;
+  top: 23%; /* Adjusted to percentage */
+  left: 34%; /* Adjusted to percentage */
+  width: 22%; /* Adjusted to percentage */
+  height: 34%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-4 {
+  position: absolute;
+  top: 79%; /* Adjusted to percentage */
+  left: 25%; /* Adjusted to percentage */
+  width: 26%; /* Adjusted to percentage */
+  height: 39%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
+
+.image-5 {
+  position: absolute;
+  top: 28%; /* Adjusted to percentage */
+  left: 51%; /* Adjusted to percentage */
+  width: 22%; /* Adjusted to percentage */
+  height: 39%; /* Adjusted to percentage */
+  border: 5px solid black; /* Add a black bold border */
+  transform: rotate(0deg); /* Adjust rotation if needed */
+}
