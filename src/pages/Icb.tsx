@@ -1,8 +1,6 @@
-/* eslint-disable react/no-array-index-key */
 import React from "react";
 
 import "../styles/Icb.css";
-import overall from "../images/home/overall.svg";
 import picture1 from "../images/home/picture1.svg";
 import picture2 from "../images/home/picture2.svg";
 import picture3 from "../images/home/picture3.svg";
