@@ -61,6 +61,7 @@
   width: 22%; /* Adjusted to percentage */
   height: 18%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
+  box-shadow: none;
 }
 
 .image-2 {
@@ -89,6 +90,7 @@
   height: 34%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
   z-index: 10; /* Higher z-index to overlap others */
+  box-shadow: none;
 }
 
 .image-4 {
@@ -125,6 +127,7 @@
   width: 10%; /* Adjusted to percentage */
   height: 18%; /* Adjusted to percentage */
   transform: rotate(0deg); /* Adjust rotation if needed */
+  box-shadow: none;
 }
 
 .image-7 {
