@@ -12,24 +12,23 @@ import picture8 from "../images/home/picture8.svg";
 import inspiracoes from "../images/home/inspiracoes.svg";
 import lema from "../images/home/lema.svg";
 import year1960 from "../images/home/year1960.svg";
-import ZoomImage from "../components/IcbZoomImage";
 
 const Icb: React.FC = () => {
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [flippedImage, setFlippedImage] = useState<string | null>(null);
 
   const handleImageClick = (src: string) => {
-    setZoomedImage(src);
+    setFlippedImage(src);
+    setTimeout(() => setFlippedImage(null), 1500); // Reset after animation
   };
 
-  const handleClose = () => {
-    setZoomedImage(null);
-  };
   return (
     <div>
       <section id="icb-pictures">
         <div className="photo-collage">
           <div
-            className="photo-container image-1"
+            className={`photo-container image-1 ${
+              flippedImage === picture1 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture1)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -44,7 +43,9 @@ const Icb: React.FC = () => {
           </div>
           <img src={year1960} alt="Lema" className="photo-container year1960" />
           <div
-            className="photo-container image-2"
+            className={`photo-container image-2 ${
+              flippedImage === picture2 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture2)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -58,7 +59,9 @@ const Icb: React.FC = () => {
             <img src={picture2} alt="Photo2" className="photo" />
           </div>
           <div
-            className="photo-container image-3"
+            className={`photo-container image-3 ${
+              flippedImage === picture3 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture3)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -77,7 +80,9 @@ const Icb: React.FC = () => {
             className="photo-container inspirations"
           />
           <div
-            className="photo-container image-4"
+            className={`photo-container image-4 ${
+              flippedImage === picture4 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture4)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -91,7 +96,9 @@ const Icb: React.FC = () => {
             <img src={picture4} alt="Photo4" className="photo" />
           </div>
           <div
-            className="photo-container image-5"
+            className={`photo-container image-5 ${
+              flippedImage === picture5 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture5)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -105,7 +112,9 @@ const Icb: React.FC = () => {
             <img src={picture5} alt="Photo5" className="photo" />
           </div>
           <div
-            className="photo-container image-6"
+            className={`photo-container image-6 ${
+              flippedImage === picture6 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture6)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -120,7 +129,9 @@ const Icb: React.FC = () => {
           </div>
           <img src={lema} alt="Lema" className="photo-container lema" />
           <div
-            className="photo-container image-7"
+            className={`photo-container image-7 ${
+              flippedImage === picture7 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture7)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -134,7 +145,9 @@ const Icb: React.FC = () => {
             <img src={picture7} alt="Photo7" className="photo" />
           </div>
           <div
-            className="photo-container image-8"
+            className={`photo-container image-8 ${
+              flippedImage === picture8 ? "flip" : ""
+            }`}
             onClick={() => handleImageClick(picture8)}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -148,7 +161,6 @@ const Icb: React.FC = () => {
             <img src={picture8} alt="Photo8" className="photo" />
           </div>
         </div>
-        {zoomedImage && <ZoomImage src={zoomedImage} onClose={handleClose} />}
       </section>
       <section id="quem-somos">
         <h2>Quem Somos</h2>
