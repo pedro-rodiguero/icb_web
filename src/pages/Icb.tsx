@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/Icb.css";
 import picture1 from "../images/home/picture1.svg";
@@ -12,151 +12,141 @@ import picture8 from "../images/home/picture8.svg";
 import inspiracoes from "../images/home/inspiracoes.svg";
 import lema from "../images/home/lema.svg";
 import year1960 from "../images/home/year1960.svg";
+import zoomImage from "../utils/zoomImage";
 
 const Icb: React.FC = () => {
-  const [flippedImage, setFlippedImage] = useState<string | null>(null);
-
-  const handleImageClick = (src: string) => {
-    setFlippedImage(src);
-    setTimeout(() => setFlippedImage(null), 1500); // Reset after animation
-  };
-
   return (
     <div>
       <section id="icb-pictures">
         <div className="photo-collage">
           <div
-            className={`photo-container image-1 ${
-              flippedImage === picture1 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture1)}
+            className="photo-container image-1"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture1);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-1"
           >
             <img src={picture1} alt="Photo1" className="photo" />
           </div>
-          <img src={year1960} alt="Lema" className="photo-container year1960" />
+          <img
+            src={year1960}
+            alt="Year 1960"
+            className="photo-container year1960"
+          />
           <div
-            className={`photo-container image-2 ${
-              flippedImage === picture2 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture2)}
+            className="photo-container image-2"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture2);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-2"
           >
             <img src={picture2} alt="Photo2" className="photo" />
           </div>
           <div
-            className={`photo-container image-3 ${
-              flippedImage === picture3 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture3)}
+            className="photo-container image-3"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture3);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-3"
           >
             <img src={picture3} alt="Photo3" className="photo" />
           </div>
           <img
             src={inspiracoes}
-            alt="Inspirações"
+            alt="Inspiracoes"
             className="photo-container inspirations"
           />
           <div
-            className={`photo-container image-4 ${
-              flippedImage === picture4 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture4)}
+            className="photo-container image-4"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture4);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-4"
           >
             <img src={picture4} alt="Photo4" className="photo" />
           </div>
           <div
-            className={`photo-container image-5 ${
-              flippedImage === picture5 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture5)}
+            className="photo-container image-5"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture5);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-5"
           >
             <img src={picture5} alt="Photo5" className="photo" />
           </div>
           <div
-            className={`photo-container image-6 ${
-              flippedImage === picture6 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture6)}
+            className="photo-container image-6"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture6);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-6"
           >
             <img src={picture6} alt="Photo6" className="photo" />
           </div>
           <img src={lema} alt="Lema" className="photo-container lema" />
           <div
-            className={`photo-container image-7 ${
-              flippedImage === picture7 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture7)}
+            className="photo-container image-7"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture7);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-7"
           >
             <img src={picture7} alt="Photo7" className="photo" />
           </div>
           <div
-            className={`photo-container image-8 ${
-              flippedImage === picture8 ? "flip" : ""
-            }`}
-            onClick={() => handleImageClick(picture8)}
+            className="photo-container image-8"
+            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                handleImageClick(picture8);
+                zoomImage(event.currentTarget.querySelector("img"));
               }
             }}
             tabIndex={0}
             role="button"
             aria-pressed={false}
+            data-img-id="image-8"
           >
             <img src={picture8} alt="Photo8" className="photo" />
           </div>
