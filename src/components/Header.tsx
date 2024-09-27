@@ -1,12 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo2 from "../images/logo2.svg";
 import MainLogo from "../images/main_logo.svg";
 import "../styles/Header.css";
 
 const Header: React.FC = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const delay = 2000; // 2 seconds delay
+
+    const timer = setTimeout(() => {
+      setImagesLoaded(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string,
+  ) => {
+    event.preventDefault();
+    navigate(`/ministries?target=${targetId}`);
+  };
+
   return (
     <header className="header">
       <div className="logo-container">
@@ -24,18 +44,28 @@ const Header: React.FC = () => {
             Ministérios
           </Link>
           <div className="dropdown-content">
-            <HashLink smooth to="/ministries#icb-jvm">
-              ICB JVM
-            </HashLink>
-            <HashLink smooth to="/ministries#adolas">
-              Adolas
-            </HashLink>
-            <HashLink smooth to="/ministries#casais">
-              Casais
-            </HashLink>
-            <HashLink smooth to="/ministries#criancas">
-              Crianças
-            </HashLink>
+            {imagesLoaded && (
+              <>
+                <a
+                  href="#icb-jvm"
+                  onClick={(e) => handleLinkClick(e, "icb-jvm")}
+                >
+                  ICB JVM
+                </a>
+                <a href="#adolas" onClick={(e) => handleLinkClick(e, "adolas")}>
+                  Adolas
+                </a>
+                <a href="#casais" onClick={(e) => handleLinkClick(e, "casais")}>
+                  Casais
+                </a>
+                <a
+                  href="#criancas"
+                  onClick={(e) => handleLinkClick(e, "criancas")}
+                >
+                  Crianças
+                </a>
+              </>
+            )}
           </div>
         </div>
         <Link to="/messages">Mensagens</Link>
