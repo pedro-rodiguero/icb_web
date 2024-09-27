@@ -15,6 +15,33 @@ const youtubeService = {
       return [];
     }
   },
+
+  getLatest12Videos: async () => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}
+        &channelId=${CHANNEL_ID}
+        &part=snippet,id&order=date&maxResults=12&type=video`,
+      );
+      return response.data.items;
+    } catch (error) {
+      console.error("Error fetching videos", error);
+      return [];
+    }
+  },
+
+  getVideosByIds: async (videoIds: string[]) => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}
+        &id=${videoIds.join(",")}&part=snippet`,
+      );
+      return response.data.items;
+    } catch (error) {
+      console.error("Error fetching videos", error);
+      return [];
+    }
+  },
 };
 
 export default youtubeService;

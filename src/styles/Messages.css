@@ -1,0 +1,42 @@
+.messages-page {
+    padding: 20px;
+  }
+  
+  .video-player {
+    margin-bottom: 20px;
+  }
+  
+  .recommended-videos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .video-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .video-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .video-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+  
+  .video-title {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+  }
