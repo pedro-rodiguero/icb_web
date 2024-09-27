@@ -5,8 +5,8 @@ import "./IcbJvm.css";
 
 const ICBJVM: React.FC = () => {
   const imageUrls = [
-    "https://storage.cloud.google.com/icb-web-bucket/photo1.JPG",
-    "https://storage.cloud.google.com/icb-web-bucket/photo2.JPG",
+    "https://storage.cloud.google.com/icb-web-bucket-brasil/photo1.JPG",
+    "https://storage.cloud.google.com/icb-web-bucket-brasil/photo2.JPG",
     // Add more image URLs here
   ];
 
