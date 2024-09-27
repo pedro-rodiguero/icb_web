@@ -15,16 +15,27 @@ import year1960 from "../images/home/year1960.svg";
 import zoomImage from "../utils/zoomImage";
 
 const Icb: React.FC = () => {
+  const handleZoomImage = (
+    e: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+  ) => {
+    const imgElement = e.currentTarget.querySelector("img");
+    const imgId = e.currentTarget.getAttribute("data-img-id");
+    if (imgElement && imgId) {
+      zoomImage(imgElement, imgId);
+    }
+    console.log(imgId);
+  };
+
   return (
     <div>
       <section id="icb-pictures">
         <div className="photo-collage">
           <div
             className="photo-container image-1"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -41,10 +52,10 @@ const Icb: React.FC = () => {
           />
           <div
             className="photo-container image-2"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -56,10 +67,10 @@ const Icb: React.FC = () => {
           </div>
           <div
             className="photo-container image-3"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -76,10 +87,10 @@ const Icb: React.FC = () => {
           />
           <div
             className="photo-container image-4"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -91,10 +102,10 @@ const Icb: React.FC = () => {
           </div>
           <div
             className="photo-container image-5"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -106,10 +117,10 @@ const Icb: React.FC = () => {
           </div>
           <div
             className="photo-container image-6"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -122,10 +133,10 @@ const Icb: React.FC = () => {
           <img src={lema} alt="Lema" className="photo-container lema" />
           <div
             className="photo-container image-7"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}
@@ -137,10 +148,10 @@ const Icb: React.FC = () => {
           </div>
           <div
             className="photo-container image-8"
-            onClick={(e) => zoomImage(e.currentTarget.querySelector("img"))}
+            onClick={handleZoomImage}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
-                zoomImage(event.currentTarget.querySelector("img"));
+                handleZoomImage(event);
               }
             }}
             tabIndex={0}

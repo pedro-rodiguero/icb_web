@@ -1,34 +1,30 @@
+/* eslint-disable prettier/prettier */
 import "../styles/IcbZoomImage.css";
 
-const getDescription = (src: string) => {
-  if (src.includes("picture1")) {
+const getDescription = (imgId: string) => {
+  switch (imgId) {
+  case "image-1":
     return "Photo 1 description.";
-  }
-  if (src.includes("picture2")) {
+  case "image-2":
     return "Photo 2 description.";
-  }
-  if (src.includes("picture3")) {
+  case "image-3":
     return "Photo 3 description.";
-  }
-  if (src.includes("picture4")) {
+  case "image-4":
     return "Photo 4 description.";
-  }
-  if (src.includes("picture5")) {
+  case "image-5":
     return "Photo 5 description.";
-  }
-  if (src.includes("picture6")) {
+  case "image-6":
     return "Photo 6 description.";
-  }
-  if (src.includes("picture7")) {
+  case "image-7":
     return "Photo 7 description.";
-  }
-  if (src.includes("picture8")) {
+  case "image-8":
     return "Photo 8 description.";
+  default:
+    return "Description not available.";
   }
-  return "Description not available.";
 };
 
-const zoomImage = (imgElement: HTMLImageElement | null) => {
+const zoomImage = (imgElement: HTMLImageElement, imgId: string) => {
   if (!imgElement) {
     console.error("Image element not found");
     return;
@@ -41,37 +37,17 @@ const zoomImage = (imgElement: HTMLImageElement | null) => {
   overlay.ariaLabel = "Close zoomed image";
   overlay.onclick = () => {
     document.body.removeChild(overlay);
-    const originalParent = document.querySelector(
-      `[data-img-id="${imgElement.dataset.imgId}"]`,
-    );
+    const originalParent = document.querySelector(`[data-img-id="${imgId}"]`);
     if (originalParent) {
       originalParent.appendChild(imgElement);
-      const clone = imgElement.cloneNode(true) as HTMLImageElement;
-      clone.style.position = "";
-      clone.style.zIndex = "";
-      clone.style.width = "";
-      clone.style.height = "";
-      clone.style.top = "";
-      clone.style.left = "";
-      clone.style.transform = "";
     }
   };
   overlay.onkeydown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
       document.body.removeChild(overlay);
-      const originalParent = document.querySelector(
-        `[data-img-id="${imgElement.dataset.imgId}"]`,
-      );
+      const originalParent = document.querySelector(`[data-img-id="${imgId}"]`);
       if (originalParent) {
         originalParent.appendChild(imgElement);
-        const clone = imgElement.cloneNode(true) as HTMLImageElement;
-        clone.style.position = "";
-        clone.style.zIndex = "";
-        clone.style.width = "";
-        clone.style.height = "";
-        clone.style.top = "";
-        clone.style.left = "";
-        clone.style.transform = "";
       }
     }
   };
@@ -84,20 +60,18 @@ const zoomImage = (imgElement: HTMLImageElement | null) => {
   zoomedPhotoContainer.onclick = (e) => e.stopPropagation();
   zoomedPhotoContainer.onkeydown = (e) => e.stopPropagation();
 
+  const photoContainerZoom = document.createElement("div");
+  photoContainerZoom.className = "photo-container-zoom";
+
   const textBox = document.createElement("div");
   textBox.className = "text-box";
-  textBox.innerHTML = `<p>${getDescription(imgElement.src)}</p>`;
+  textBox.innerHTML = `<p>${getDescription(imgId)}</p>`;
 
   const clone = imgElement.cloneNode(true) as HTMLImageElement;
-  clone.style.position = "fixed";
-  clone.style.zIndex = "1001";
-  clone.style.width = "40%";
-  clone.style.height = "auto";
-  clone.style.top = "50%";
-  clone.style.left = "50%";
-  clone.style.transform = "translate(-50%, -50%)";
+  clone.className = "zoomed-photo";
 
-  zoomedPhotoContainer.appendChild(clone);
+  photoContainerZoom.appendChild(clone);
+  zoomedPhotoContainer.appendChild(photoContainerZoom);
   zoomedPhotoContainer.appendChild(textBox);
   overlay.appendChild(zoomedPhotoContainer);
 
