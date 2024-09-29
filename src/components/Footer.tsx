@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import React from "react";
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaSpotify, FaYoutube } from "react-icons/fa";
 import "../styles/Footer.css";
 
 const Footer: React.FC = () => {
@@ -28,9 +29,16 @@ const Footer: React.FC = () => {
           >
             <FaYoutube size={24} />
           </a>
+          <a
+            href="https://open.spotify.com/show/7GoyYvDQ3PTYM0Lu6ATMEm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaSpotify size={24} />
+          </a>
         </div>
         <p>
-          &copy; 2023 Igreja de Cristo em Brasília. Todos os direitos
+          &copy; 2024 Igreja de Cristo em Brasília. Todos os direitos
           reservados.
         </p>
         <p>
@@ -57,6 +65,14 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
           >
             YouTube
+          </a>
+          |
+          <a
+            href="https://open.spotify.com/show/7GoyYvDQ3PTYM0Lu6ATMEm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Spotify
           </a>
         </p>
       </div>
