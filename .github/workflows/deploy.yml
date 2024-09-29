@@ -10,9 +10,9 @@ env:
   GAR_LOCATION: 'us-central1'
   GKE_CLUSTER: 'icb-web-deploy'
   GKE_ZONE: 'southamerica-east1'
-  DEPLOYMENT_NAME: 'icb-web-deploy'
-  REPOSITORY: 'https://github.com/pedro-rodiguero/icb_web'
-  IMAGE: 'https://github.com/pedro-rodiguero/icb_web:latest'
+  DEPLOYMENT_NAME: 'icb-web-deployment'
+  REPOSITORY: 'icb_web'
+  IMAGE: 'icb_web:latest'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/772107785669/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
   REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
   REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
@@ -67,6 +67,6 @@ jobs:
       - name: 'Deploy to GKE'
         run: |-
           ./kustomize edit set image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
-          ./kustomize build . | kubectl apply -f -
+          ./kustomize build k8s | kubectl apply -f -
           kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
           kubectl get services -o wide

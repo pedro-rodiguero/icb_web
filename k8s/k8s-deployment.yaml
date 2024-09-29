@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icb-web-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: icb-web
+  template:
+    metadata:
+      labels:
+        app: icb-web
+    spec:
+      containers:
+      - name: icb-web
+        image: us-central1-docker.pkg.dev/icb-web-434214/icb_web/icb_web:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: icb-web-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: icb-web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
