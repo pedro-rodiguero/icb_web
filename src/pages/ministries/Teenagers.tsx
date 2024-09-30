@@ -1,16 +1,20 @@
 import React from "react";
 
 import ImageCarousel from "../../components/ImageCarousel";
+import "./Teenagers.css";
 
 const Teenagers: React.FC = () => {
+  const bucketLink = "https://storage.cloud.google.com/icb-web-bucket-brasil";
   const imageUrls = [
-    "https://storage.cloud.google.com/icb-web-bucket/photo3.JPG",
+    `${bucketLink}/adolescentes/adolescentes1.jpg`,
+    `${bucketLink}/adolescentes/adolescentes2.jpg`,
+    `${bucketLink}/adolescentes/adolescentes3.jpg`,
   ];
   return (
-    <div>
+    <div className="teenagers-container">
       <h2>Adolas</h2>
-      <p>Conteúdo sobre Adolas...</p>
       <ImageCarousel imageUrls={imageUrls} />
+      <p>Conteúdo sobre Adolas...</p>
     </div>
   );
 };

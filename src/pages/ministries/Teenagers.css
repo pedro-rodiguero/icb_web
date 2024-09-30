@@ -1,0 +1,15 @@
+.teenagers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .teenagers-container .carousel {
+    width: 66%; /* Two-thirds of the screen */
+  }
+  
+  .teenagers-container p {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }

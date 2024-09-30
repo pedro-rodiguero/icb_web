@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -6,23 +7,28 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 interface ImageCarouselProps {
   imageUrls: string[];
+  height?: string | number; // Correct height prop type
 }
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ imageUrls }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ imageUrls, height }) => {
   return (
-    <Carousel autoPlay infiniteLoop showThumbs={false}>
-      {imageUrls.map((url) => (
-        <div key={url}>
-          <LazyLoadImage
-            src={url}
-            alt="Slide"
-            effect="blur"
-            width="100%"
-            height="auto"
-          />
-        </div>
-      ))}
-    </Carousel>
+    <div style={{ height }}>
+      {" "}
+      {/* Apply height to the container */}
+      <Carousel autoPlay infiniteLoop showThumbs={false}>
+        {imageUrls.map((url) => (
+          <div key={url}>
+            <LazyLoadImage
+              src={url}
+              alt="Slide"
+              effect="blur"
+              width="100%"
+              height="auto"
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

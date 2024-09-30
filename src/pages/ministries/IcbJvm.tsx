@@ -2,6 +2,7 @@ import React from "react";
 
 import ImageCarousel from "../../components/ImageCarousel";
 import "./IcbJvm.css";
+import icbJvm from "../../images/ministries/icbjvm/icbJvm.svg";
 
 const ICBJVM: React.FC = () => {
   const imageUrls = [
@@ -12,9 +13,10 @@ const ICBJVM: React.FC = () => {
 
   return (
     <div className="icb-jvm-container">
-      <h2>ICB JVM</h2>
-      <ImageCarousel imageUrls={imageUrls} />
-      <p>Conteúdo sobre ICB JVM...</p>
+      <img src={icbJvm} alt="ICB JVM header" />
+      <ImageCarousel imageUrls={imageUrls} height="521px" />{" "}
+      {/* Set the desired height */}
+      <img src={icbJvm} alt="ICB JVM footer" className="footer-image" />
     </div>
   );
 };
