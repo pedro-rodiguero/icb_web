@@ -9,7 +9,7 @@
 
 .icb-jvm-container .carousel {
   width: 66%; /* Two-thirds of the screen */
-  height: 521px; /* Ensure it takes the full height of the container */
+  height: 77vh; /* Ensure it takes the full height of the container */
 }
 
 .footer-image {

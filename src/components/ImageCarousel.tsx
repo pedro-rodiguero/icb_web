@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "./ImageCarousel.css"; // Import the CSS file
 
 interface ImageCarouselProps {
   imageUrls: string[];
@@ -13,17 +14,14 @@ interface ImageCarouselProps {
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ imageUrls, height }) => {
   return (
     <div style={{ height }}>
-      {" "}
-      {/* Apply height to the container */}
       <Carousel autoPlay infiniteLoop showThumbs={false}>
         {imageUrls.map((url) => (
-          <div key={url}>
+          <div key={url} className="carousel-image-container">
             <LazyLoadImage
               src={url}
               alt="Slide"
               effect="blur"
-              width="100%"
-              height="auto"
+              className="carousel-image"
             />
           </div>
         ))}

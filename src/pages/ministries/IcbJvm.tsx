@@ -14,7 +14,7 @@ const ICBJVM: React.FC = () => {
   return (
     <div className="icb-jvm-container">
       <img src={icbJvm} alt="ICB JVM header" />
-      <ImageCarousel imageUrls={imageUrls} height="521px" />{" "}
+      <ImageCarousel imageUrls={imageUrls} height="100vh" />{" "}
       {/* Set the desired height */}
       <img src={icbJvm} alt="ICB JVM footer" className="footer-image" />
     </div>
