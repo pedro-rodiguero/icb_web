@@ -37,6 +37,13 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
+      - name: 'Configure Docker for Google Artifact Registry'
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS }}" > /tmp/gcp-key.json
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          ACCESS_TOKEN=$(gcloud auth print-access-token)
+          echo $ACCESS_TOKEN | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
+
       - name: 'Set up GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
         with:
