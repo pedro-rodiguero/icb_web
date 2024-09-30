@@ -38,7 +38,10 @@ jobs:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: 'Configure Docker for Google Artifact Registry'
-        run: echo "${{ steps.auth.outputs.access_token }}" | docker login -u oauth2accesstoken --password-stdin "https://us-central1-docker.pkg.dev"
+        run: |
+          echo "${{ steps.auth.outputs.access_token }}" | docker login -u oauth2accesstoken --password-stdin "https://us-central1-docker.pkg.dev"
+        env:
+          ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
 
       - name: 'Set up GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
