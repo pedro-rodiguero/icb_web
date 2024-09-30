@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const delay = 2000; // 2 seconds delay
+    const delay = 500;
 
     const timer = setTimeout(() => {
       setImagesLoaded(true);
