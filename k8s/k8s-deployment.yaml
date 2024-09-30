@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: icb-web
-        image: us-central1-docker.pkg.dev/icb-web-434214/icb_web/icb_web:latest
+        image: gcr.io/icb-web-434214/icb_web:latest
         ports:
         - containerPort: 80
 ---
