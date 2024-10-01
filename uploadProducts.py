@@ -1,60 +1,61 @@
 import os
 import json
 import requests
-from google.cloud import firestore
-from google.oauth2 import service_account
 import logging
 import time
 import hmac
 import hashlib
-import base64
-from urllib.parse import quote, urlencode
-
-# Load environment variables
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
-
-# Initialize Firestore
-credentials = service_account.Credentials.from_service_account_file(
-    os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-)
-db = firestore.Client(
-    credentials=credentials, project=os.getenv("GOOGLE_CLOUD_PROJECT")
-)
-
-# Read product data from JSON file
-with open("products.json") as f:
-    products_data = json.load(f)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Read product data from JSON file
+with open("products.json") as f:
+    products_data = json.load(f)
 
-# Function to fetch product details from Amazon API
-def fetch_product_details(affiliate_link):
+
+# Function to fetch product title from Amazon API
+def fetch_product_title(affiliate_link):
     try:
         asin = extract_asin(affiliate_link)
+        if not asin:
+            logger.error(f"Could not extract ASIN from link: {affiliate_link}")
+            return None
         payload = {
             "PartnerTag": os.getenv("AMAZON_ASSOCIATE_TAG"),
             "PartnerType": "Associates",
             "ItemIds": [asin],
-            "Resources": [
-                "Offers.Listings.Price",
-                "ItemInfo.Title",
-                "Images.Primary.Large",
-            ],
-            "LanguagesOfPreference": ["pt_BR"],
+            "Resources": ["ItemInfo.Title"],
+            "Marketplace": "www.amazon.com",
         }
         headers = generate_headers(payload)
         response = requests.post(
-            "https://webservices.amazon.com.br/paapi5/getitems",
+            "https://webservices.amazon.com/paapi5/getitems",
             json=payload,
             headers=headers,
         )
         response.raise_for_status()  # Raise an error for bad status codes
-        return response.json()
+
+        # Check for errors in the response body
+        response_data = response.json()
+        if "Errors" in response_data:
+            for error in response_data["Errors"]:
+                logger.error(
+                    f"Error Code: {error['Code']}, Message: {error['Message']}"
+                )
+            return None
+
+        item = response_data.get("ItemsResult", {}).get("Items", [])[0]
+        return (
+            item.get("ItemInfo", {})
+            .get("Title", {})
+            .get("DisplayValue", "Unknown Title")
+        )
     except requests.exceptions.RequestException as e:
         logger.error(f"Request failed: {e}")
         return None
@@ -65,21 +66,15 @@ def fetch_product_details(affiliate_link):
 
 # Function to extract ASIN from affiliate link
 def extract_asin(affiliate_link):
-    # Extract ASIN from the affiliate link
     return affiliate_link.split("/dp/")[1].split("/")[0]
-
-
-# Function to generate timestamp
-def get_timestamp():
-    return time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
 
 
 # Function to generate headers
 def generate_headers(payload):
     method = "POST"
-    host = "webservices.amazon.com.br"
+    host = "webservices.amazon.com"
     uri = "/paapi5/getitems"
-    content_type = "application/json; charset=utf-8"
+    content_type = "application/json; charset=UTF-8"
     content_encoding = "amz-1.0"
     x_amz_date = get_timestamp()
     x_amz_target = "com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems"
@@ -122,45 +117,34 @@ def get_signature_key(key, date_stamp, region_name, service_name):
     return k_signing
 
 
-# Function to upload products to Firestore
-def upload_products():
-    batch = db.batch()
-    products_collection = db.collection("products")
+# Function to generate timestamp
+def get_timestamp():
+    return time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
 
+
+# Function to save product titles to a file
+def save_product_titles(product_titles):
+    with open("productsInfo.txt", "w") as f:
+        for title in product_titles:
+            f.write(f"Title: {title}\n")
+
+
+# Main function to fetch and save product titles
+def main():
+    product_titles = []
     for product in products_data:
-        product_details = fetch_product_details(product["affiliateLink"])
-        if product_details:
-            item = product_details.get("ItemsResult", {}).get("Items", [])[0]
-            product_ref = products_collection.document()  # Auto-generate ID
-            batch.set(
-                product_ref,
-                {
-                    "name": item.get("ItemInfo", {})
-                    .get("Title", {})
-                    .get("DisplayValue", "Unknown"),
-                    "description": item.get("ItemInfo", {})
-                    .get("Title", {})
-                    .get("DisplayValue", "No description available"),
-                    "price": item.get("Offers", {})
-                    .get("Listings", [])[0]
-                    .get("Price", {})
-                    .get("DisplayAmount", "0.0"),
-                    "imageUrl": item.get("Images", {})
-                    .get("Primary", {})
-                    .get("Large", {})
-                    .get("URL", ""),
-                    "affiliateLink": product["affiliateLink"],
-                },
-            )
+        title = fetch_product_title(product["affiliateLink"])
+        if title:
+            product_titles.append(title)
         else:
             logger.warning(
                 f"Skipping product with affiliate link: {product['affiliateLink']}"
             )
 
-    batch.commit()
-    logger.info("Products uploaded successfully.")
+    save_product_titles(product_titles)
+    logger.info("Product titles saved successfully.")
 
 
-# Run the upload function
+# Run the main function
 if __name__ == "__main__":
-    upload_products()
+    main()
