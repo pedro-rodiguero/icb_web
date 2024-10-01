@@ -25,3 +25,5 @@ yarn-error.log*
 .env
 /config
 gke-cluster-sa-key.json
+
+/venv
