@@ -71,6 +71,7 @@ const Header: React.FC = () => {
         <Link to="/messages">Mensagens</Link>
         <Link to="/contribute">Contribua</Link>
         <Link to="/contact">Contato</Link>
+        <Link to="/store">Loja</Link>
       </nav>
     </header>
   );

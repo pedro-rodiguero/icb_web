@@ -10,6 +10,7 @@ import Contribute from "./pages/Contribute";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import "./styles/App.css";
+import Store from "./pages/Store";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/messages" element={<Messages />} />
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/store" element={<Store />} />
           </Routes>
         </div>
         <Footer />
