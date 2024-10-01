@@ -19,7 +19,7 @@ const Messages: React.FC = () => {
   const [videos, setVideos] = useState<Video[]>([]);
   const [recommendedVideos] = useState<Video[]>([
     {
-      id: "RECOMMENDED_VIDEO_ID_1",
+      id: "6g3QlcS5Bbo",
       snippet: {
         title: "AMADO TIMÓTEO - A MENSAGEM DO EVANGELHO",
         thumbnails: {
@@ -30,7 +30,7 @@ const Messages: React.FC = () => {
       },
     },
     {
-      id: "RECOMMENDED_VIDEO_ID_2",
+      id: "7v5DBntgEZU",
       snippet: {
         title: "Pr. Edson Gouveia - 25/04/2021",
         thumbnails: {
@@ -41,7 +41,7 @@ const Messages: React.FC = () => {
       },
     },
     {
-      id: "RECOMMENDED_VIDEO_ID_3",
+      id: "XndkrMccoJ8",
       snippet: {
         title: "Seu Nome é JESUS - Especial de Páscoa",
         thumbnails: {
