@@ -1,19 +1,27 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: icb-web-deployment
-spec:
-  replicas: 3  # Adjust the number of replicas as needed
-  selector:
-    matchLabels:
-      app: icb-web
-  template:
-    metadata:
-      labels:
-        app: icb-web
-    spec:
-      containers:
-      - name: icb-web
-        image: gcr.io/icb-web-434214/icb_web:latest
-        ports:
-        - containerPort: 8080  # Ensure this matches the targetPort in the service
+steps:
+  # Build Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/icb-web-434214/icb_web:latest', '.']
+  # Push Docker Image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/icb-web-434214/icb_web:latest']
+  # Deploy to GKE
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'deployment.yaml']
+  # Set up Ingress
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'ingress.yaml']
+  # Set up Service
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'service.yaml']
+
+images:
+  - 'gcr.io/icb-web-434214/icb_web:latest'
+
+timeout: '1200s'
+
+options:
+  logging: CLOUD_LOGGING_ONLY  # Use Cloud Logging for build logs
+  machineType: 'N1_HIGHCPU_8'  # Optional: specify machine type for faster builds
+
+logsBucket: 'gs://icb-web-logs'  # Specify the logs bucket
