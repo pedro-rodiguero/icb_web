@@ -7,7 +7,6 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
-  GAR_LOCATION: 'us-central1'
   GKE_CLUSTER: 'icb-web-deploy'
   GKE_ZONE: 'southamerica-east1'
   DEPLOYMENT_NAME: 'icb-web-deployment'
@@ -37,22 +36,15 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
-      - name: 'Configure Docker for Google Artifact Registry'
-        run: |
-          echo "${{ secrets.GCP_CREDENTIALS }}" > /tmp/gcp-key.json
-          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
-          ACCESS_TOKEN=$(gcloud auth print-access-token)
-          echo $ACCESS_TOKEN | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
-
       - name: 'Set up GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
         with:
           cluster_name: '${{ env.GKE_CLUSTER }}'
           location: '${{ env.GKE_ZONE }}'
 
-      - name: 'Build and push Docker container'
+      - name: 'Build Docker container'
         run: |-
-          DOCKER_TAG="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}"
+          DOCKER_TAG="gcr.io/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }}"
 
           docker build \
             --tag "${DOCKER_TAG}" \
@@ -60,6 +52,9 @@ jobs:
             --build-arg GITHUB_REF="${{ github.ref }}" \
             .
 
+      - name: 'Push Docker container to Google Container Registry'
+        run: |-
+          gcloud auth configure-docker
           docker push "${DOCKER_TAG}"
 
       - name: 'Set up Kustomize'
@@ -70,7 +65,11 @@ jobs:
 
       - name: 'Deploy to GKE'
         run: |-
-          ./kustomize edit set image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
+          ./kustomize edit set image ${{ env.REPOSITORY }}=${DOCKER_TAG}
           ./kustomize build k8s | kubectl apply -f -
           kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
           kubectl get services -o wide
+
+      - name: 'Set logging options'
+        run: |-
+          gcloud builds submit --config=cloudbuild.yaml --substitutions=_IMAGE="${DOCKER_TAG}" --logging=CLOUD_LOGGING_ONLY
