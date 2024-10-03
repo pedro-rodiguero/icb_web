@@ -12,7 +12,7 @@ env:
   GKE_ZONE: 'southamerica-east1'
   DEPLOYMENT_NAME: 'icb-web-deployment'
   REPOSITORY: 'icb_web'
-  IMAGE: 'icb_web:latest'
+  IMAGE: 'gcr.io/$PROJECT_ID/icb_web:latest'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/772107785669/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
   REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
   REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
@@ -44,33 +44,23 @@ jobs:
           ACCESS_TOKEN=$(gcloud auth print-access-token)
           echo $ACCESS_TOKEN | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
 
-      - name: 'Set up GKE credentials'
-        uses: 'google-github-actions/get-gke-credentials@v2'
-        with:
-          cluster_name: '${{ env.GKE_CLUSTER }}'
-          location: '${{ env.GKE_ZONE }}'
-
-      - name: 'Build and push Docker container'
-        run: |-
-          DOCKER_TAG="${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}"
-
-          docker build \
-            --tag "${DOCKER_TAG}" \
-            --build-arg GITHUB_SHA="${{ github.sha }}" \
-            --build-arg GITHUB_REF="${{ github.ref }}" \
-            .
-
-          docker push "${DOCKER_TAG}"
-
-      - name: 'Set up Kustomize'
-        run: |-
-          curl -sfLo kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_linux_amd64.tar.gz
-          tar -xzf kustomize.tar.gz
-          chmod u+x ./kustomize
+      - name: 'Build Docker Image'
+        run: |
+          docker build -t $IMAGE .
+          docker push $IMAGE
 
       - name: 'Deploy to GKE'
-        run: |-
-          ./kustomize edit set image ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
-          ./kustomize build k8s | kubectl apply -f -
-          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
-          kubectl get services -o wide
+        run: |
+          kubectl config set-cluster icb-web-deploy --server=https://${{ secrets.GKE_CLUSTER }}-${{ secrets.GKE_ZONE }}.cloud.google.com:443 --certificate-authority=/tmp/ca.pem
+          kubectl config set-context icb-web-deploy --cluster=icb-web-deploy --user=icb-web-deploy
+          kubectl config use-context icb-web-deploy
+          kubectl apply -f deployment.yaml
+
+      - name: 'Set up Ingress'
+        run: |
+          kubectl apply -f ingress.yaml
+
+      - name: 'Set up Service'
+        run: |
+          kubectl apply -f service.yaml
+

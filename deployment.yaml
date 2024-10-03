@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icb-web-deployment
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: icb-web
+  template:
+    metadata:
+      labels:
+        app: icb-web
+    spec:
+      containers:
+      - name: icb-web
+        image: gcr.io/icb-web-434214/icb_web:latest
+        ports:
+        - containerPort: 8080  # Ensure this matches the targetPort in the service

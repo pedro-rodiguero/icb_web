@@ -1,0 +1,21 @@
+steps:
+  # Build Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/icb-web-434214/icb_web:latest', '.']
+  # Push Docker Image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/icb-web-434214/icb_web:latest']
+  # Deploy to GKE
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'deployment.yaml']
+  # Set up Ingress
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'ingress.yaml']
+  # Set up Service
+  - name: 'gcr.io/cloudbuild-templates/kubectl'
+    args: ['apply', '-f', 'service.yaml']
+
+images:
+  - 'gcr.io/icb-web-434214/icb_web:latest'
+
+timeout: '1200s'
