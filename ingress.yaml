@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: icb-web-ingress
+spec:
+  rules:
+  - host: icbrasilia.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: icb-web-service
+            port:
+              number: 80  # Ensure this matches the service port
