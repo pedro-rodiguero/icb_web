@@ -11,7 +11,7 @@ env:
   GKE_ZONE: 'southamerica-east1'
   DEPLOYMENT_NAME: 'icb-web-deployment'
   REPOSITORY: 'icb_web'
-  IMAGE: gcr.io/icb-web-434214/icb_web:latest
+  IMAGE: 'gcr.io/icb-web-434214/icb_web:latest'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/772107785669/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
   REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
   REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
@@ -42,10 +42,9 @@ jobs:
           gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
           gcloud auth configure-docker
 
-      - name: 'Build Docker Image'
+      - name: 'Build and Push Docker Image using Cloud Build'
         run: |
-          docker build -t $IMAGE .
-          docker push $IMAGE
+          gcloud builds submit --tag $IMAGE .
 
       - name: 'Set up GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
