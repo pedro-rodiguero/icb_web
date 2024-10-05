@@ -15,6 +15,14 @@ env:
   WORKLOAD_IDENTITY_PROVIDER: 'projects/772107785669/locations/global/workloadIdentityPools/icb-web-pool/providers/my-provider'
   REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
   REACT_APP_YOUTUBE_CHANNEL_ID: ${{ secrets.REACT_APP_YOUTUBE_CHANNEL_ID }}
+  CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/icb_web/icb_web/gha-creds-ee441ef366f88a40.json
+  GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/icb_web/icb_web/gha-creds-ee441ef366f88a40.json
+  GOOGLE_GHA_CREDS_PATH: /home/runner/work/icb_web/icb_web/gha-creds-ee441ef366f88a40.json
+  CLOUDSDK_CORE_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+  CLOUDSDK_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+  GCLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+  GCP_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+  GOOGLE_CLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
 
 jobs:
   setup-build-publish-deploy:
