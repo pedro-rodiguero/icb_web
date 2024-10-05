@@ -42,6 +42,14 @@ jobs:
           gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
           gcloud auth configure-docker
 
+      - name: 'Grant permissions to Cloud Build service account'
+        run: |
+          PROJECT_ID=${{ env.PROJECT_ID }}
+          SERVICE_ACCOUNT=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")@cloudbuild.gserviceaccount.com
+          gcloud projects add-iam-policy-binding $PROJECT_ID \
+            --member=serviceAccount:$SERVICE_ACCOUNT \
+            --role=roles/storage.admin
+
       - name: 'Build and Push Docker Image using Cloud Build'
         run: |
           gcloud builds submit --tag $IMAGE .
