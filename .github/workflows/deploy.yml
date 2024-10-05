@@ -42,13 +42,6 @@ jobs:
           gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
           gcloud auth configure-docker
 
-      - name: 'Grant serviceusage.serviceUsageViewer Role'
-        run: |
-          gcloud projects add-iam-policy-binding ${{ env.PROJECT_ID }} \
-            --member="serviceAccount:772107785669@${{ env.PROJECT_ID }}.iam.gserviceaccount.com" \
-            --role="roles/serviceusage.serviceUsageViewer" \
-            --condition="expression=request.time < timestamp('2024-10-03T15:46:34.348Z'),title=cloudbuild-connection-setup"
-
       - name: 'Build and Push Docker Image using Cloud Build'
         run: |
           gcloud builds submit --tag $IMAGE .
